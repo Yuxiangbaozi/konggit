@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>导航</title>
+</head>
+<body>
+    <head></head>
+    <main id="main1"></main>
+    <footer></footer>
+    <script>
+        var keys = {
+            0:['q','w','e','r','t','y','u','i','o','p'],
+            1:['a','s','d','f','g','h','j','k','l'],
+            2:['z','x','c','v','b','n','m'],
+            length: 3
+        }
+        var hash = {
+            q:'www.qq.com',
+            w:undefined,
+            e:undefined,
+            r:undefined,
+            t:undefined,
+            y:'www.youku.com/',
+            a:'www.acfun.cn/',
+            b:'www.bilibili.com/',
+        }
+        var hashInlocalstouage = JSON.parse(localStorage.getItem('click1') || 'null')
+        if(hashInlocalstouage){
+                hash = hashInlocalstouage
+            }
+        var index = 0
+        while(index < keys['length']){
+            div1 = document.createElement('div')//创建<div>
+            main1.appendChild(div1)//<main>下面添加<div>
+            var index2 = 0
+            row = keys[index]
+            while (index2 < row['length']) {
+                kbd1 = document.createElement('kbd') //创建<kbd>
+                div1.appendChild(kbd1) //<div>下面添加<kbd>
+                kbd1.textContent = row[index2] //<kbd>内容
+                kbd1.id = row[index2] //<kbd>ID
+                button1 = document.createElement('button')
+                kbd1.appendChild(button1)
+                button1.textContent = '编辑'
+                button1.id = row[index2]
+                button1.onclick = function(click1){
+                    key1 = click1['target']['id']
+                    x = prompt('请输入网址')
+                    hash[key] = x
+                    localStorage.setItem('click1', JSON.stringify(hash))
+                }
+                index2 = index2 + 1
+            }
+            index = index + 1
+        }
+
+        document.onkeypress = function(keybd){ //键盘按键事件
+            key = keybd['key'] //
+            website = hash[key] 
+            window.open('https://'+website, '_blank') //新窗口打开
+        }
+        main1.onclick = function(click){ //鼠标点击事件
+            key = click['target']['id'] //点击对应的按键ID保存到key里面
+            website = hash[key]
+            window.open('https://'+website, '_blank')
+        }
+        
+    </script>
+</body>
+</html>

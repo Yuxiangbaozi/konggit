@@ -1,0 +1,24 @@
+*{margin: 0; padding: 0;}
+a{text-decoration: none;}
+main>div>kbd{
+    width: 5em;
+    height: 5em;
+    border: 1px solid blue;
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    
+}
+main>div{
+    text-align: center;
+    
+}
+main>div>kbd>button{
+    position: absolute;
+    left: auto;
+    bottom: 0;
+    display: none;
+}
+main>div>kbd:hover>button{
+    display: inline-block;
+}
